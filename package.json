@@ -2,12 +2,13 @@
   "name": "devtree_express_react",
   "version": "1.0.0",
   "description": "Aplicacion generadora de enlaces de redes sociales",
-  "main": "index.js",
-  "type": "module",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev2": "node --watch index.js",
-    "dev": "nodemon index.js"
+    "dev2": "node --watch src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "start": "dist/index.js"
   },
   "author": "Alan Altamirano Hernandez",
   "license": "ISC",
@@ -16,6 +17,9 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "@types/express": "^5.0.3",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
