@@ -9,6 +9,7 @@ const conexionDB = async () => {
     }catch (e) {
         console.log("Error en la conexion a la base de datos");
         console.log(e.message);
+        process.exit(1);
     }
 }
 
