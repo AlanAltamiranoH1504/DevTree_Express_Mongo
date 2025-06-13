@@ -3,6 +3,13 @@ import {TUsuario} from "../types";
 const {Schema} = mongoose;
 
 const usuarioSchema = new Schema({
+    handle: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+        lowercase: true
+    },
     nombre: {
         type: String,
         required: true,
