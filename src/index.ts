@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import server from "./server";
+import mongoose from "./config/db"
 dotenv.config();
 
 const puerto = process.env.PORT || 5000

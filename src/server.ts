@@ -1,10 +1,10 @@
 import express from "express";
-import router from "./router";
+import conexionDB from "./config/db";
 import AuthRouter from "./routes/AuthRouter";
 
 const app = express();
-//Habilitacion de peticiones json
 app.use(express.json());
+conexionDB();
 
 //Uso de routers
 app.use("/", AuthRouter);
