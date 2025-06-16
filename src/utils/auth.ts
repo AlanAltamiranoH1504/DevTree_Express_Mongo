@@ -10,3 +10,7 @@ export const generacionSlug = (nombre: string) => {
     const usernameSlug = slug(nombre, "_");
     return usernameSlug;
 }
+
+export const comparacionPasswords = (passwordNoHasheada: string, passwordHasehada: string) => {
+    return bcrypt.compare(passwordNoHasheada, passwordHasehada);
+}

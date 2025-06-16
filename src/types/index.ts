@@ -4,3 +4,8 @@ export type TUsuario = {
     email: string;
     password: string;
 }
+
+export type TUsuarioLogin = {
+    email: string;
+    password: string;
+}

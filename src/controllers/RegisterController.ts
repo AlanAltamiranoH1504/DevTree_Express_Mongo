@@ -1,6 +1,5 @@
 import {TUsuario} from "../types";
 import {ValidationError, Result} from "express-validator";
-import bcrypt from "bcrypt";
 
 import Usuario from "../models/Usuario";
 import {validationResult} from "express-validator";
