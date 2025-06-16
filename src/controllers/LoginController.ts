@@ -2,6 +2,7 @@ import {Result, ValidationError, validationResult} from "express-validator";
 import {TUsuarioLogin} from "../types";
 import Usuario from "../models/Usuario";
 import {comparacionPasswords} from "../utils/auth";
+import {generetedJWT} from "../utils/jwt";
 
 const login = async (req, res) => {
     try {
@@ -33,6 +34,7 @@ const login = async (req, res) => {
         } else {
             return res.status(200).json({
                 "message": "Login correcto",
+                "jwt": generetedJWT(usuarioExists.id, usuarioExists.email)
             });
         }
     }catch (e) {
