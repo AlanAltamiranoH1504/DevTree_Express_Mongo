@@ -18,7 +18,7 @@ const saveUsuario = async (req, res) => {
         const usuarioExistente = await Usuario.findOne({email: req.body.email});
         if (usuarioExistente) {
             return res.status(409).json({
-                error: "Email ya registrado."
+                msg: "Email ya registrado."
             });
         }
 
@@ -26,7 +26,7 @@ const saveUsuario = async (req, res) => {
         const handleRegistrado = await Usuario.findOne(({handle: generacionSlug(req.body.handle)}));
         if (handleRegistrado) {
             return res.status(409).json({
-                error: "Username ya registrado."
+                msg: "Username ya registrado."
             });
         }
 
@@ -45,7 +45,7 @@ const saveUsuario = async (req, res) => {
         });
     } catch (e) {
         return res.status(400).json({
-            error: e.message
+            msg: e.message
         });
     }
 }
