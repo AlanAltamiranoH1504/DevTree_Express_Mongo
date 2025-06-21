@@ -13,7 +13,7 @@ const saveImagenCloudinary = async (req, res) => {
     //Configuracion de formidable
     const form = formidable({
         multiples: false,
-
+    })
     try {
         //Manejo de archivos
         form.parse(req, (err, fields, files) => {
