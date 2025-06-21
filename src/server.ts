@@ -3,6 +3,7 @@ import conexionDB from "./config/db";
 import AuthRouter from "./routes/AuthRouter";
 import loginRouter from "./routes/LoginRouter";
 import administracionRouter from "./routes/AdministracionRouter";
+import usuarioRoutes from "./routes/UsuarioRoutes";
 import {corsConfig} from "./config/cors";
 import cors from "cors";
 
@@ -15,5 +16,6 @@ conexionDB();
 app.use("/", AuthRouter);
 app.use("/login", loginRouter);
 app.use("/admin", administracionRouter);
+app.use("/usuarios", usuarioRoutes);
 
 export default app;

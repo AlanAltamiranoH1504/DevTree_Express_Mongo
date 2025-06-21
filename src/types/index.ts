@@ -3,7 +3,11 @@ export type TUsuario = {
     nombre: string;
     email: string;
     password: string;
+    descripcion: string;
 }
+
+export type TUsuarioRegistro = Pick<TUsuario, "handle" | "nombre" | "email" | "password">
+export type TUsuarioUpdateInformacion = Pick<TUsuario, "handle" | "descripcion">
 
 export type TUsuarioLogin = {
     email: string;

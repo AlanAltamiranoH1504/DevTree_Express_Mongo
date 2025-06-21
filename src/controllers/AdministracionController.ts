@@ -1,6 +1,3 @@
-import jwt from "jsonwebtoken";
-import Usuario from "../models/Usuario";
-
 const getUsuario = async (req, res) => {
     try {
         const usuarioEnSesion = req.usuario;
@@ -9,10 +6,7 @@ const getUsuario = async (req, res) => {
                 error: "Sesion no iniciada",
             });
         }
-        return res.status(200).json({
-            usuarioEnSesion,
-            msg: "Llegando a AmdinistracionController"
-        })
+        return res.status(200).json(usuarioEnSesion)
     }catch (e) {
         return res.status(401).json({
             error: "Sesion no iniciada",

@@ -32,6 +32,11 @@ const usuarioSchema = new Schema({
     confirmado: {
         type: Boolean,
         default: false
+    },
+    descripcion: {
+        type: String,
+        required: false,
+        default: " "
     }
 });
 

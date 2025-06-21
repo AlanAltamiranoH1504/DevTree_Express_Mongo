@@ -1,4 +1,4 @@
-import {TUsuario} from "../types";
+import {TUsuario, TUsuarioRegistro} from "../types";
 import {ValidationError, Result} from "express-validator";
 
 import Usuario from "../models/Usuario";
@@ -33,7 +33,7 @@ const saveUsuario = async (req, res) => {
         //Registro de usuario
         const passwordHash : string =  await hasheoPasswords(req.body.password);
         const handleCreado = generacionSlug(req.body.handle);
-        const usuario: TUsuario = {
+        const usuario: TUsuarioRegistro = {
             nombre: req.body.nombre,
             email: req.body.email,
             password: passwordHash,

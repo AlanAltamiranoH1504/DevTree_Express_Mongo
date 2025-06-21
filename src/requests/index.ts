@@ -22,7 +22,13 @@ const requestLoginUsuario = [
         .isLength({min: 5}).withMessage("El password debe tener al menos 5 caracteres"),
 ]
 
+const requestUpdateInformacionUsuario = [
+    body("handle")
+        .notEmpty().withMessage("El hadnle es obligatorio.")
+]
+
 export {
     requestSaveUsuario,
-    requestLoginUsuario
+    requestLoginUsuario,
+    requestUpdateInformacionUsuario
 }
