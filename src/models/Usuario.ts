@@ -37,6 +37,16 @@ const usuarioSchema = new Schema({
         type: String,
         required: false,
         default: " "
+    },
+    imagen: {
+        type: String,
+        required: false,
+        default: " "
+    },
+    urlImagen: {
+        type: String,
+        required: false,
+        default: " "
     }
 });
 

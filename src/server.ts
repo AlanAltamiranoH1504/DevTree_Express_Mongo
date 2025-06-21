@@ -4,6 +4,7 @@ import AuthRouter from "./routes/AuthRouter";
 import loginRouter from "./routes/LoginRouter";
 import administracionRouter from "./routes/AdministracionRouter";
 import usuarioRoutes from "./routes/UsuarioRoutes";
+import imaganesRoutes from "./routes/ImaganesRoutes";
 import {corsConfig} from "./config/cors";
 import cors from "cors";
 
@@ -17,5 +18,6 @@ app.use("/", AuthRouter);
 app.use("/login", loginRouter);
 app.use("/admin", administracionRouter);
 app.use("/usuarios", usuarioRoutes);
+app.use("/imagenes", imaganesRoutes);
 
 export default app;
