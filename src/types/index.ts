@@ -6,6 +6,7 @@ export type TUsuario = {
     descripcion: string;
     imagen: string;
     urlImagen: string;
+    links: string
 }
 
 export type TUsuarioRegistro = Pick<TUsuario, "handle" | "nombre" | "email" | "password">

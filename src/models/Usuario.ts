@@ -47,7 +47,14 @@ const usuarioSchema = new Schema({
         type: String,
         required: false,
         default: " "
-    }
+    },
+    links: [
+        {
+            nombre: String,
+            url: String,
+            enabled: Boolean
+        }
+    ]
 });
 
 const Usuario = mongoose.model<TUsuario>("Usuario", usuarioSchema);
