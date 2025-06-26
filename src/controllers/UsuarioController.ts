@@ -11,7 +11,7 @@ const pruebaUsuarioController = (req, res) => {
 }
 
 const updateInformacion = async (req, res) => {
-    const errors:  Result<ValidationError> = validationResult(req);
+    const errors: Result<ValidationError> = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(409).json({
             errors: errors.array()
@@ -38,7 +38,7 @@ const updateInformacion = async (req, res) => {
         res.status(200).json({
             msg: "Información actualizada correctamente.",
         });
-    }catch (e) {
+    } catch (e) {
         return res.status(500).json({
             error: "Error en actualizacion de informacion de usuario.",
             message: e.message
@@ -46,7 +46,37 @@ const updateInformacion = async (req, res) => {
     }
 }
 
+const updateLinksUser = async (req, res) => {
+    const errores = validationResult(req);
+    if (!errores.isEmpty()) {
+        return res.status(409).json({
+            errores: errores.array()
+        });
+    }
+    try {
+        const userInSession = req.usuario;
+        const {links} = req.body;
+        const usuarioToUpdate = await Usuario.findOneAndUpdate({
+            email: userInSession.email
+        }, {
+            $set: {
+                links: links
+            }
+        });
+        usuarioToUpdate.save();
+        return res.status(200).json({
+            msg: "Link actualizado correctamente.",
+        })
+    } catch (e) {
+        return res.status(500).json({
+            error: "Error en la actualizacion de link del usuario.",
+            message: e.message
+        });
+    }
+}
+
 export {
     pruebaUsuarioController,
-    updateInformacion
+    updateInformacion,
+    updateLinksUser
 }

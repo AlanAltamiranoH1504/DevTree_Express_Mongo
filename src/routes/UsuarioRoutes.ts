@@ -1,10 +1,11 @@
 import {Router} from "express";
-import {pruebaUsuarioController, updateInformacion} from "../controllers/UsuarioController";
+import {pruebaUsuarioController, updateInformacion, updateLinksUser} from "../controllers/UsuarioController";
 import {requestUpdateInformacionUsuario} from "../requests";
 import protegerRuta from "../middlewares/ProtegerRuta";
 const router = Router();
 
 router.get("", pruebaUsuarioController);
 router.put("/", protegerRuta, requestUpdateInformacionUsuario, updateInformacion);
+router.put("/links", protegerRuta, updateLinksUser);
 
 export default router;
