@@ -60,7 +60,7 @@ const updateLinksUser = async (req, res) => {
             email: userInSession.email
         }, {
             $set: {
-                links: links
+                links: JSON.stringify(links)
             }
         });
         usuarioToUpdate.save();
@@ -75,8 +75,32 @@ const updateLinksUser = async (req, res) => {
     }
 }
 
+const informacionDePerfilPublica = async (req, res) => {
+    try {
+        const handle = req.params.handle;
+        //Busqueda de usuario con ese handle
+        const findUser = await Usuario.findOne({
+            handle: handle
+        }).select("-_id nombre handle descripcion urlImagen links");
+
+        //Error de handle no encontrado
+        if (!findUser) {
+            return res.status(400).json({
+                msg: `Usuario con handle ${handle} no registrado.`
+            });
+        }
+        return res.status(200).json(findUser);
+    } catch (e) {
+        return res.status(500).json({
+            error: "Error en la busqueda de usuario con handle: ",
+            message: e.message
+        });
+    }
+}
+
 export {
     pruebaUsuarioController,
     updateInformacion,
-    updateLinksUser
+    updateLinksUser,
+    informacionDePerfilPublica
 }

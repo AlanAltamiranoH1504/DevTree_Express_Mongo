@@ -48,13 +48,10 @@ const usuarioSchema = new Schema({
         required: false,
         default: " "
     },
-    links: [
-        {
-            nombre: String,
-            url: String,
-            enabled: Boolean
-        }
-    ]
+    links:{
+        type: String,
+        default: "[]"
+    }
 });
 
 const Usuario = mongoose.model<TUsuario>("Usuario", usuarioSchema);
