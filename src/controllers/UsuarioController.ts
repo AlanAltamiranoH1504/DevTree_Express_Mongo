@@ -98,9 +98,39 @@ const informacionDePerfilPublica = async (req, res) => {
     }
 }
 
+const handleRegistrado = async (req, res) => {
+    const errores:  Result<ValidationError> = validationResult(req);
+    if (!errores.isEmpty()) {
+        return res.status(409).json({
+            errores: errores.array()
+        });
+    }
+    try {
+        const handle: string = req.body.handle;
+        //Busqueda de usuario registrado con ese handle
+        const handleRegistrado = await Usuario.findOne({
+            handle: handle
+        });
+        if (handleRegistrado) {
+            return res.status(409).json({
+                error: "Handle ya registrado."
+            });
+        }
+        return res.status(200).json({
+            msg: "Handle disponible para su uso."
+        })
+    }catch (e) {
+        return res.status(500).json({
+            error: "Error en la busqueda de handle registrado.",
+            message: e.message
+        });
+    }
+}
+
 export {
     pruebaUsuarioController,
     updateInformacion,
     updateLinksUser,
-    informacionDePerfilPublica
+    informacionDePerfilPublica,
+    handleRegistrado
 }

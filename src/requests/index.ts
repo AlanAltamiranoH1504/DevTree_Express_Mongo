@@ -1,6 +1,6 @@
-import {body} from "express-validator";
+import {body, ValidationChain} from "express-validator";
 
-const requestSaveUsuario = [
+const requestSaveUsuario: ValidationChain[] = [
     body("nombre")
         .notEmpty().withMessage("El nombre es obligatorio."),
     body("email")
@@ -13,7 +13,7 @@ const requestSaveUsuario = [
         .notEmpty().withMessage("El username es obligatorio.")
 ];
 
-const requestLoginUsuario = [
+const requestLoginUsuario: ValidationChain[] = [
     body("email")
         .notEmpty().withMessage("El email es obligatorio.")
         .isEmail().withMessage("El formato del email no es el correcto"),
@@ -22,13 +22,19 @@ const requestLoginUsuario = [
         .isLength({min: 5}).withMessage("El password debe tener al menos 5 caracteres"),
 ]
 
-const requestUpdateInformacionUsuario = [
+const requestUpdateInformacionUsuario: ValidationChain[] = [
     body("handle")
         .notEmpty().withMessage("El hadnle es obligatorio.")
 ]
 
+const requestSearchHandle = [
+    body("handle")
+        .notEmpty().withMessage("El handle de busqueda es obligatorio.")
+];
+
 export {
     requestSaveUsuario,
     requestLoginUsuario,
-    requestUpdateInformacionUsuario
+    requestUpdateInformacionUsuario,
+    requestSearchHandle
 }
