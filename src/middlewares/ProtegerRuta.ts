@@ -43,7 +43,7 @@ const protegerRuta = async (req, res, next) => {
 
         const usuarioEnSesion = await Usuario.findOne({
             email: email,
-        }).select("nombre handle email descripcion imagen urlImagen");
+        }).select("nombre handle email descripcion imagen urlImagen links");
         if (!usuarioEnSesion) {
             return res.status(404).json({
                 error: "Usuario no encontrado"
